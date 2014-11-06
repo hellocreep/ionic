@@ -17,35 +17,27 @@
 IonicModule
 .provider('$ionicConfig', function() {
 
-  // container of all ionic configs
-  // The angular world should use $ionicConfig
-  var config = ionic.config = {};
-
+  var provider = this;
+  var config = {
+    prefetchTemplates: true
+  };
 
   /**
    * @ngdoc method
    * @name $ionicConfigProvider#prefetchTemplates
    * @description Set whether Ionic should prefetch all templateUrls defined in
-   * $stateProvider.state. If set to false, the user will have to wait
-   * for a template to be fetched the first time when navigating to a new page. Default `true`.
-   * @param {boolean} shouldPrefetch Whether Ionic should prefetch templateUrls defined in
-   * `$stateProvider.state()`.
+   * $stateProvider.state. Default true. If set to false, the user will have to wait
+   * for a template to be fetched the first time he/she is going to a a new page.
+   * @param shouldPrefetch Whether Ionic should prefetch templateUrls defined in
+   * `$stateProvider.state()`. Default true.
    * @returns {boolean} Whether Ionic will prefetch templateUrls defined in $stateProvider.state.
    */
-  config.prefetchTemplates = true;
-
-
-
-  // private: create methods for each config to get/set
-  var provider = this;
-  forEach(config, function(defaultValue, configMethod) {
-    provider[configMethod] = function(newValue) {
-      if (arguments.length) {
-        config[configMethod] = newValue;
-      }
-      return config[configMethod];
-    };
-  });
+  this.prefetchTemplates = function(newValue) {
+    if (arguments.length) {
+      config.prefetchTemplates = newValue;
+    }
+    return config.prefetchTemplates;
+  };
 
   // private: Service definition for internal Ionic use
   /**

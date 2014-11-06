@@ -51,7 +51,7 @@
  *       {% raw %}{{item}}{% endraw %}
  *     </div>
  *   </div>
- * </ion-content>
+ * </div>
  * ```
  * ```js
  * function ContentCtrl($scope) {

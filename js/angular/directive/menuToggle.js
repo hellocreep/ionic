@@ -5,11 +5,11 @@
  * @restrict AC
  *
  * @description
- * Toggle a side menu on the given side.
+ * Toggle a side menu on the given side
  *
  * @usage
- * Below is an example of a link within a nav bar. Tapping this button
- * would open the given side menu, and tapping it again would close it.
+ * Below is an example of a link within a nav bar. Tapping this link would
+ * automatically open the given side menu
  *
  * ```html
  * <ion-view>
@@ -21,19 +21,20 @@
  * ```
  */
 IonicModule
-.directive('menuToggle', function() {
+.directive('menuToggle', ['$ionicViewService', function($ionicViewService) {
   return {
     restrict: 'AC',
     require: '^ionSideMenus',
     link: function($scope, $element, $attr, sideMenuCtrl) {
+      var side = $attr.menuToggle || 'left';
       $element.bind('click', function(){
-        if ($attr.menuToggle === 'right') {
-          sideMenuCtrl.toggleRight();
-        } else {
+        if(side === 'left') {
           sideMenuCtrl.toggleLeft();
+        } else if(side === 'right') {
+          sideMenuCtrl.toggleRight();
         }
       });
     }
   };
-});
+}]);
 

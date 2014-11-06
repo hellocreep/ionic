@@ -119,6 +119,7 @@ IonicModule
       });
 
       $scope.$on('$destroy', function() {
+        console.log(scrollCtrl);
         if(scrollCtrl && scrollCtrl.$element)scrollCtrl.$element.off('scroll', checkBounds);
       });
 

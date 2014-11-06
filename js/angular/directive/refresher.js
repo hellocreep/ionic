@@ -73,7 +73,7 @@ IonicModule
           '<i class="icon {{pullingIcon}}"></i>' +
         '</div>' +
         '<div class="text-pulling" ng-bind-html="pullingText"></div>' +
-        '<div class="icon-refreshing"><i class="icon {{refreshingIcon}}"></i></div>' +
+        '<i class="icon {{refreshingIcon}} icon-refreshing"></i>' +
         '<div class="text-refreshing" ng-bind-html="refreshingText"></div>' +
       '</div>' +
     '</div>',
