@@ -3,6 +3,7 @@
   var IOS = 'ios';
   var ANDROID = 'android';
   var WINDOWS_PHONE = 'windowsphone';
+  var WEB = 'browser';
 
   /**
    * @ngdoc utility
@@ -154,6 +155,14 @@
      */
     isWebView: function() {
       return !(!window.cordova && !window.PhoneGap && !window.phonegap);
+    },
+    /**
+     * @ngdoc method
+     * @name  ionic.Platform#isWeb
+     * @description Only for the web app, do not use this when build a native app.
+     */
+    isWeb: function() {
+      return this.is(WEB);
     },
     /**
      * @ngdoc method
@@ -375,7 +384,7 @@
     windowLoadListenderAttached = true;
     window.addEventListener("load", onWindowLoad, false);
   }
-  
+
   window.addEventListener("load", onWindowLoad, false);
 
   function onPlatformReady() {

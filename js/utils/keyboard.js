@@ -336,18 +336,24 @@ function keyboardHasPlugin() {
 }
 
 ionic.Platform.ready(function() {
-  keyboardUpdateViewportHeight();
+  // ! Important
+  // Only for the web app, prevent the keybord action
+  // Just use in the web temporary
+  // Delete this when build a native app
+  if(!ionic.Platform.isWeb()) {
+    keyboardUpdateViewportHeight();
 
-  // Android sometimes reports bad innerHeight on window.load
-  // try it again in a lil bit to play it safe
-  setTimeout(keyboardUpdateViewportHeight, 999);
+    // Android sometimes reports bad innerHeight on window.load
+    // try it again in a lil bit to play it safe
+    setTimeout(keyboardUpdateViewportHeight, 999);
 
-  // only initialize the adjustments for the virtual keyboard
-  // if a touchstart event happens
-  if (window.navigator.msPointerEnabled) {
-    document.addEventListener("MSPointerDown", keyboardInit, false);
-  } else {
-    document.addEventListener('touchstart', keyboardInit, false);
+    // only initialize the adjustments for the virtual keyboard
+    // if a touchstart event happens
+    if (window.navigator.msPointerEnabled) {
+      document.addEventListener("MSPointerDown", keyboardInit, false);
+    } else {
+      document.addEventListener('touchstart', keyboardInit, false);
+    }
   }
 });
 
